@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="loginHome")
      */
     public function indexAction(Request $request)
     {
@@ -17,5 +17,13 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    /**
+     * @Route("/home", name="homepage")
+     */
+    public function homeAction()
+    {
+        return $this->render('default/home.html.twig');
     }
 }
