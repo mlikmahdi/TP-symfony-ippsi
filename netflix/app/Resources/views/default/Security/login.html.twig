@@ -1,14 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
                 <h1><span>Welcome to</span> Netflix</h1>
-                <a href="{{ path('logout') }}">Se déconnecter</a>
+            </div>
+            <div>
+                {% if error %}
+                    <div>{{ error.messageKey }}</div>
+                {% endif %}
+                <form action="{{ path('login') }}" method="post">
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="_password"/>
+                    <button type="submit">login</button>
+                </form>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block stylesheets %}
@@ -39,3 +52,4 @@
         }
     </style>
 {% endblock %}
+
