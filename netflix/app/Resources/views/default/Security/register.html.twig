@@ -4,35 +4,43 @@
 
 
 
-    {#<div class="jumbotron">#}
-        {#<h2 class="center">Bienvenue sur Netflix</h2>#}
-        {#<hr>#}
+    <div class="jumbotron">
+        <h2 class="center">Bienvenue sur Netflix</h2>
+        <h5 class="center text-danger">INSCRIPTION</h5>
+        <hr>
         {#{% if error %}#}
             {#<div class="alert alert-danger" role="alert">{{ error.messageKey }}</div>#}
         {#{% endif %}#}
-        {#<form class="row">#}
-            {#<div class="col-md-offset-3 col-md-6">#}
-                {#<div class="form-group">#}
-                    {#<label for="exampleInputEmail1">Email</label>#}
-                    {#<input type="text" id="username" name="_username" class="form-control">#}
-                {#</div>#}
-                {#<div class="form-group">#}
-                    {#<label for="exampleInputPassword1">Mot de Passe</label>#}
-                    {#<input type="password" id="password" name="_password" class="form-control">#}
-                {#</div>#}
-                {#<button type="submit" class="btn btn-default">Connexion</button>#}
-            {#</div>#}
-        {#</form>#}
-    {#</div>#}
+        <form class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" id="username" name="form[username]" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" id="username" name="form[email]" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mot de Passe</label>
+                    <input type="password" id="password" name="form[plainPassword.first]" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Confirmer Mot de Passe</label>
+                    <input type="password" id="password" name="form[plainPassword.second]" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-default">Inscription</button>
+            </div>
+        </form>
+    </div>
 
-    {{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
-
-    <button type="submit">Register!</button>
-    {{ form_end(form) }}
+    {#{{ form_start(form) }}#}
+    {#{{ form_row(form.username) }}#}
+    {#{{ form_row(form.email) }}#}
+    {#{{ form_row(form.plainPassword.first) }}#}
+    {#{{ form_row(form.plainPassword.second) }}#}
+    {#<button type="submit">Register!</button>#}
+    {#{{ form_end(form) }}#}
 
 {% endblock %}
 
