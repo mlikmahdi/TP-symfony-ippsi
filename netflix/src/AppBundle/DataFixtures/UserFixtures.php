@@ -32,11 +32,9 @@ class UserFixtures extends Fixture
 
     private function loadUserAdmin(ObjectManager $manager)
     {
-        $i = 0;
-        $username = 'MM ' . $i;
-        $email = $i . 'MM@gmail.com';
-
         for ($i = 0; $i < 3; $i++) {
+            $username = 'MM ' . $i;
+            $email = $i . 'MM@gmail.com';
             $user = $this->userManager->createUser($username, $email, 'user', true);
             $this->addReference('user-admin-' . $i , $user);
         }
@@ -45,11 +43,9 @@ class UserFixtures extends Fixture
 
     private function loadUser(ObjectManager $manager)
     {
-        $i = 0;
-        $username = 'MaMoh' . $i;
-        $email = $i . 'MaMoh@gmail.com';
-
         for ($i = 0; $i < 10; $i++) {
+            $username = 'MaMoh ' . $i;
+            $email = $i . 'MaMoh@gmail.com';
             $user = $this->userManager->createUser($username, $email, 'user', false);
             $this->addReference('user-' . $i , $user);
         }

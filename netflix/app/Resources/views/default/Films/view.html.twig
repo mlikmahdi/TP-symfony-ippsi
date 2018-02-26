@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head>
+        <title>{{ film.name }}</title>
+    </head>
+    <body>
+        <h3>{{ film.name }}</h3>
+        <p>{{ film.description }}</p>
+        <img> {{ film.image }} </img>
+        <br>
+        <a href="{{ path('films_list') }}">Liste des films</a>
+    </body>
+
+{% endblock %}

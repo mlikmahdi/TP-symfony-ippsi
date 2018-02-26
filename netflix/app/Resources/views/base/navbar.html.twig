@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ path('homepage') }}">
                     <img alt="Brand" src="{{ asset('img/netflix-logo.png') }}">
                 </a>
             </div>
@@ -18,7 +18,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Link</a></li>
+                <li><a href="{{ path('films_list') }}">Films</a></li>
                 <li><a href="#">Link</a></li>
             </ul>
             <form class="navbar-form navbar-left">
