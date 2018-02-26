@@ -10,17 +10,17 @@
         {% if error %}
             <div class="alert alert-danger" role="alert">{{ error.messageKey }}</div>
         {% endif %}
-        <form class="row">
+        <form class="row" action="{{ path('login') }}" method="post">
             <div class="col-md-offset-3 col-md-6">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
+                    <label for="username">Email</label>
                     <input type="text" id="username" name="_username" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Mot de Passe</label>
+                    <label for="password">Mot de Passe</label>
                     <input type="password" id="password" name="_password" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-default">Connexion</button>
+                <button href={{ path('homepage') }} type="submit" class="btn btn-default">Connexion</button>
             </div>
         </form>
     </div>
