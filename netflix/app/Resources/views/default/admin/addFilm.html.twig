@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head>
+        <title>Ajout d'un film</title>
+    </head>
+    <body>
+    <h1>Ajout d'un film : </h1>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+    <div>
+        {{ form_label(form.image) }}
+        {{ form_errors(form.image) }}
+        {{ form_widget(form.image) }}
+    </div>
+    <div>
+        {{ form_label(form.category) }}
+        {{ form_errors(form.category) }}
+        {{ form_widget(form.category) }}
+    </div>
+    <div>
+        {{ form_row(form.save) }}
+    </div>
+    {{ form_end(form) }}
+
+    </body>
+
+{% endblock %}

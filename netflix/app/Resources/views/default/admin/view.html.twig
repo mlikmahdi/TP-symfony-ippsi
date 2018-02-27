@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head>
+        <title>{{ film.name }}</title>
+    </head>
+    <body>
+        <h3>{{ film.name }}</h3>
+        <p>{{ film.description }}</p>
+        <img> {{ film.image }} </img>
+        <br>
+        {#<a href="{{ path('film_edit', {'id' : film.id}) }}">Modifier le film</a>#}
+        {#<br>#}
+        <a href="{{ path('filmsAdmin_list') }}">Retour sur la liste des films</a>
+    </body>
+
+{% endblock %}
