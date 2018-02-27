@@ -19,12 +19,13 @@ class FilmsFixtures extends Fixture
     {
         // TODO: Implement load() method.
         for ($i = 0; $i < 30; $i++) {
-            $article = new Films();
-            $article
+            $film = new Films();
+            $film
                 ->setName('Film ' . $i)
                 ->setDescription('Lorem ipsum lorem ipsum')
-                ->setImage('fixtureImage');
-                $manager->persist($article);
+                ->setImage('fixtureImage')
+                ->setCategory($this->getReference('category-' . mt_rand(0, 2)));
+                $manager->persist($film);
         }
         $manager->flush();
     }
