@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+    <div class="jumbotron">
+        <h2 class="center">Bienvenue sur Netflix</h2>
+        <h5 class="center text-danger">INSCRIPTION</h5>
+        <hr>
+        {#{% if error %}#}
+            {#<div class="alert alert-danger" role="alert">{{ error.messageKey }}</div>#}
+        {#{% endif %}#}
+        <form class="row" action="{{ path('user_registration') }}" method="post">
+
+
+        {#<div>#}
+            {#{{ form_label(form.name, { 'attr': {'class': 'form-control'} }) }}#}
+            {#{{ form_errors(form.name) }}#}
+            {#{{ form_widget(form.name) }}#}
+        {#</div>#}
+
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="form-group">
+                           {{ form_label(form.username, 'Username') }}
+                           {{ form_widget(form.username, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <div class="form-group">
+                           {{ form_label(form.email, 'Email') }}
+                           {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <div class="form-group">
+                           {{ form_label(form.plainPassword.first, 'Mot de Passe') }}
+                           {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <div class="form-group">
+                           {{ form_label(form.plainPassword.second, 'Confirmer Mot de Passe') }}
+                           {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <button type="submit" class="btn btn-default">Inscription</button>
+                        <a href="{{ path('login')  }}" type="button" class="btn btn-link">Se connecter</a>
+                    </div>
+                    {{ form_rest(form) }}
+               </form>
+           </div>
+
+{% endblock %}
+
+

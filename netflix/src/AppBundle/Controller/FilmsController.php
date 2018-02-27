@@ -17,7 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class FilmsController extends Controller
 {
     /**
-     * @Route("/films", name="films_list") */
+     * @Route("/films", name="films_list")
+     */
     public function listFilmsAction()
     {
         $em = $this->getDoctrine()->getManager();

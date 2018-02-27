@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -13,6 +14,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->deletedAt = null;
+        $this->bannedAtAt = null;
+        $this->isAdmin = 0;
+    }
+
     /**
      * @var int
      *
@@ -42,6 +54,12 @@ class User implements UserInterface
      * @ORM\Column(name="password", type="string", length=60)
      */
     private $password;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=60)
+     */
+    private $plainPassword;
 
     /**
      * @var \DateTime
@@ -153,6 +171,17 @@ class User implements UserInterface
     {
         return $this->password;
     }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
+
 
     /**
      * Set createdAt
