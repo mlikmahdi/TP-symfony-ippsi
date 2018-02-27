@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}{{ film.name }}{% endblock %}
 {% block body %}
 
-    <head>
-        <title>{{ film.name }}</title>
-    </head>
-    <body>
-        <h3>{{ film.name }}</h3>
-        <p>{{ film.description }}</p>
-        <img> {{ film.image }} </img>
-        <br>
-        <a href="{{ path('films_list') }}">Liste des films</a>
-    </body>
+
+    <h1 class="center text-danger">{{ film.name }}</h1>
+
+    <a class="btn btn-light mb-3"  href="{{ path('films_list') }}">Retour</a>
+    <div class="card mb-3">
+        <img class="card-img-top" src="http://via.placeholder.com/894x210" alt="{{ film.name }}">
+        <div class="card-body">
+            {#<h5 class="card-title">{{ film.name }}</h5>#}
+            <p class="card-text center">{{ film.description }}</p>
+        </div>
+    </div>
+
 
 {% endblock %}

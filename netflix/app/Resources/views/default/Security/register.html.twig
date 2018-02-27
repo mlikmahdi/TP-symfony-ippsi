@@ -1,18 +1,51 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(255, 80, 80, 0.7)), url('../img/cover-signin2.jpg');
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 
+    <form class="form-signin" action="{{ path('user_registration') }}" method="post">
+        <img class="mb-4" src="{{ asset('img/netflix-logo.png') }}" alt="" width="100%" height="72">
+        {#{{ form_label(form.username, 'Username') }}#}
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control','for': 'inputEmail','placeholder': 'Username'} }) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control','for': 'inputEmail','placeholder': 'email'} }) }}
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control','for': 'inputPassword','placeholder': 'Mot de Passe'} }) }}
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','placeholder': 'Confirmer mot de passe'} }) }}
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','placeholder': 'Confirmer mot de passe'} }) }}
+        <button class="btn btn-lg btn-danger btn-block" type="submit">Inscription</button>
+        <a class="btn btn-lg btn-link btn-block" href="{{ path('login')  }}">Se connecter</a>
+        {{ form_rest(form) }}
+    </form>
 
+{% endblock %}
 
-    <div class="jumbotron">
-        <h2 class="center">Bienvenue sur Netflix</h2>
-        <h5 class="center text-danger">INSCRIPTION</h5>
-        <hr>
-        {#{% if error %}#}
-            {#<div class="alert alert-danger" role="alert">{{ error.messageKey }}</div>#}
-        {#{% endif %}#}
-        <form class="row" action="{{ path('user_registration') }}" method="post">
-
+                        {#<div class="form-group">#}
+                           {#{{ form_label(form.email, 'Email') }}#}
+                           {#{{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                           {#{{ form_label(form.plainPassword.first, 'Mot de Passe') }}#}
+                           {#{{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                           {#{{ form_label(form.plainPassword.second, 'Confirmer Mot de Passe') }}#}
+                           {#{{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}#}
+                        {#</div>#}
+                        {#<button type="submit" class="btn btn-default">Inscription</button>#}
+                        {#<a href="{{ path('login')  }}" type="button" class="btn btn-link">Se connecter</a>#}
+                    {#</div>#}
+                    {#{{ form_rest(form) }}#}
+               {#</form>#}
+           {#</div>#}
 
         {#<div>#}
             {#{{ form_label(form.name, { 'attr': {'class': 'form-control'} }) }}#}
@@ -20,30 +53,5 @@
             {#{{ form_widget(form.name) }}#}
         {#</div>#}
 
-                    <div class="col-md-offset-3 col-md-6">
-                        <div class="form-group">
-                           {{ form_label(form.username, 'Username') }}
-                           {{ form_widget(form.username, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                        <div class="form-group">
-                           {{ form_label(form.email, 'Email') }}
-                           {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                        <div class="form-group">
-                           {{ form_label(form.plainPassword.first, 'Mot de Passe') }}
-                           {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                        <div class="form-group">
-                           {{ form_label(form.plainPassword.second, 'Confirmer Mot de Passe') }}
-                           {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                        <button type="submit" class="btn btn-default">Inscription</button>
-                        <a href="{{ path('login')  }}" type="button" class="btn btn-link">Se connecter</a>
-                    </div>
-                    {{ form_rest(form) }}
-               </form>
-           </div>
-
-{% endblock %}
 
 
