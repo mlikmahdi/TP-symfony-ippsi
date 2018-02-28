@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Modifier Catégorie{% endblock %}
+
 {% block body %}
 
-    <head>
-        <title>Modifier une catégorie</title>
-    </head>
-    <body>
-    <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
-    <h1>Modifier une catégorie :</h1>
     {{ form_start(form) }}
-    {{ form_errors(form) }}
-    <div>
-        {{ form_label(form.name) }}
-        {{ form_errors(form.name) }}
-        {{ form_widget(form.name) }}
+    <h1>Modifier une Catégorie</h1>
+    <hr>
+    <a class="btn btn-light" href="{{ path('adminHome') }}">Dashboard</a>
+    <hr>
+    <div role="alert">
+        {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
     </div>
-    <div>
-        {{ form_row(form.save) }}
-    </div>
+
+    <form action="{{ path('films_add') }}" method="post">
+        {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
+        {{ form_rest(form) }}
+        <button class="btn btn-lg btn-danger btn-block" type="submit">Modifier</button>
+    </form>
+
     {{ form_end(form) }}
-    </body>
+
 {% endblock %}

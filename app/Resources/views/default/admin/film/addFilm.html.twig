@@ -5,21 +5,21 @@
 {% block body %}
 
     {{ form_start(form) }}
-        <a href="{{ path('adminHome') }}" class="btn btn-default">Retour sur tableau de bord</a>
         <h1>Ajouter un Film</h1>
+        <hr>
+        <a class="btn btn-light" href="{{ path('adminHome') }}">Dashboard</a>
         <hr>
         <div role="alert">
             {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
         </div>
         <form action="{{ path('films_add') }}" method="post">
-                {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Name'} }) }}
+                {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
                 {{ form_widget(form.description, { 'attr': {'class': 'form-control mb-3','placeholder': 'Description'} }) }}
                 {{ form_widget(form.image, { 'attr': {'class': 'form-control mb-3','placeholder': 'Image'} }) }}
                 {{ form_widget(form.category, { 'attr': {'class': 'form-control mb-3','placeholder': 'Catégorie'} }) }}
                 {{ form_rest(form) }}
                 <button class="btn btn-lg btn-danger btn-block" type="submit">Ajouter</button>
         </form>
-        {{ form_end(form) }}
     {{ form_end(form) }}
 
 {% endblock %}
