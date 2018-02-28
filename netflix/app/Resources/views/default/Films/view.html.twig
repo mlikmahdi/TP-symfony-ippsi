@@ -11,6 +11,7 @@
         <img> {{ film.image }} </img>
         <br>
         <a href="{{ path('films_list') }}">Liste des films</a>
+        <a href="{{ path('category_view', { 'id' : film.category.id }) }}">{{ film.category.name }}</a>
     </body>
 
 {% endblock %}
