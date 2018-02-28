@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="films">
+                <head>
+                    <title>Catégories :</title>
+                </head>
+                <body>
+                <h1>Catégories :</h1>
+                {% for category in categories %}
+                    <h3>{{ category.name }}</h3>
+                    <a href="{{ path('category_view', {'id' : category.id}) }}">Voir tous les films {{ category.name }}</a>
+                    <br>
+                {% endfor %}
+                <br>
+                </body>
+            </div>
+        </div>
+    </div>
+{% endblock %}
