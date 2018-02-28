@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head>
+        <title>Modifier un film</title>
+    </head>
+    <body>
+    <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
+    <h1>Modifier un film :</h1>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+    <div>
+        {{ form_label(form.image) }}
+        {{ form_errors(form.image) }}
+        {{ form_widget(form.image) }}
+    </div>
+    <div>
+        {{ form_label(form.category) }}
+        {{ form_errors(form.category) }}
+        {{ form_widget(form.category) }}
+    </div>
+    <div>
+        {{ form_row(form.save) }}
+    </div>
+    {{ form_end(form) }}
+    </body>
+{% endblock %}

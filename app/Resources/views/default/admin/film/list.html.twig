@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="films">
+                <head>
+                    <title>Films à l'affiche :</title>
+                </head>
+                <body>
+                    <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
+                    <h1>Films à l'affiche :</h1>
+                    {% for film in films %}
+                        <h3>{{ film.name }}</h3>
+                        <p>{{ film.description }}</p>
+                        <img> {{ film.image }} </img>
+                        <br>
+                        <a href="{{ path('filmAdmin_view', {'id' : film.id}) }}">Détail du film</a>
+                        <br>
+                    {% endfor %}
+                    <br>
+                </body>
+            </div>
+        </div>
+    </div>
+{% endblock %}
