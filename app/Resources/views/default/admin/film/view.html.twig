@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ film.name }}{% endblock %}
+
 {% block body %}
 
-    <head>
-        <title>{{ film.name }}</title>
-    </head>
-    <body>
-        <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
-        <h3>{{ film.name }}</h3>
-        <p>{{ film.description }}</p>
-        <img> {{ film.image }} </img>
-        <br>
-        {#<a href="{{ path('film_edit', {'id' : film.id}) }}">Modifier le film</a>#}
-        {#<br>#}
-        <a href="{{ path('filmsAdmin_list') }}">Retour sur la liste des films</a>
-    </body>
+    <a href="{{ path('adminHome') }}" class="btn btn-default">Retour sur tableau de bord</a>
+    <h1 class="center text-danger">{{ film.name }}</h1>
+    <a class="btn btn-light mb-3" href="{{ path('filmsAdmin_list') }}">Retour sur la liste des Films</a>
+    <a class="btn btn-warning mb-3" href="{{ path('film_edit', {'id' : film.id}) }}">Modifier le film</a>
+    <div class="card mb-3">
+        {# {{ film.image }} #}
+        <img class="card-img-top" src="http://via.placeholder.com/894x210" alt="{{ film.name }}">
+        <div class="card-body">
+            <p class="card-text center">{{ film.description }}</p>
+        </div>
+    </div>
 
 {% endblock %}

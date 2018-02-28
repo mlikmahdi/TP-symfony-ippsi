@@ -1,40 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Ajouter Film{% endblock %}
+
 {% block body %}
 
-    <head>
-        <title>Ajout d'un film</title>
-    </head>
-    <body>
-    <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
-    <h1>Ajout d'un film : </h1>
     {{ form_start(form) }}
-    {{ form_errors(form) }}
-    <div>
-        {{ form_label(form.name) }}
-        {{ form_errors(form.name) }}
-        {{ form_widget(form.name) }}
-    </div>
-    <div>
-        {{ form_label(form.description) }}
-        {{ form_errors(form.description) }}
-        {{ form_widget(form.description) }}
-    </div>
-    <div>
-        {{ form_label(form.image) }}
-        {{ form_errors(form.image) }}
-        {{ form_widget(form.image) }}
-    </div>
-    <div>
-        {{ form_label(form.category) }}
-        {{ form_errors(form.category) }}
-        {{ form_widget(form.category) }}
-    </div>
-    <div>
-        {{ form_row(form.save) }}
-    </div>
+        <a href="{{ path('adminHome') }}" class="btn btn-default">Retour sur tableau de bord</a>
+        <h1>Ajouter un Film</h1>
+        <hr>
+        <div role="alert">
+            {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
+        </div>
+        <form action="{{ path('films_add') }}" method="post">
+                {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Name'} }) }}
+                {{ form_widget(form.description, { 'attr': {'class': 'form-control mb-3','placeholder': 'Description'} }) }}
+                {{ form_widget(form.image, { 'attr': {'class': 'form-control mb-3','placeholder': 'Image'} }) }}
+                {{ form_widget(form.category, { 'attr': {'class': 'form-control mb-3','placeholder': 'Catégorie'} }) }}
+                {{ form_rest(form) }}
+                <button class="btn btn-lg btn-danger btn-block" type="submit">Ajouter</button>
+        </form>
+        {{ form_end(form) }}
     {{ form_end(form) }}
-
-    </body>
 
 {% endblock %}

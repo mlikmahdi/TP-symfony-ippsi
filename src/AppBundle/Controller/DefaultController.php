@@ -40,4 +40,13 @@ class DefaultController extends Controller
         ]);
     }
 
+    /*
+     *  Exo atelier en cours
+     */
+    public function menuAction()
+    {
+        $items = ['Item1', 'Item2', 'Item3'];
+        return $this->render('default/menu.html.twig');
+    }
+
 }
