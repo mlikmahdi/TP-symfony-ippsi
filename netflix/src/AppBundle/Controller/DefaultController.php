@@ -27,4 +27,10 @@ class DefaultController extends Controller
         return $this->render('default/home.html.twig');
     }
 
+    public function menuAction()
+    {
+        $items = ['Item1', 'Item2', 'Item3'];
+        return $this->render('default/menu.html.twig');
+    }
+
 }

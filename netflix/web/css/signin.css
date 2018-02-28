@@ -4,6 +4,7 @@ body {
 }
 
 body {
+    margin: 0;
     color:#ddd;
     display: -ms-flexbox;
     display: -webkit-box;

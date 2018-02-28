@@ -25,13 +25,15 @@ class FilmType extends AbstractType
         $builder
             ->add('name', TextType::class, ['label' => 'Nom du film :'])
             ->add('description', TextareaType::class, ['label' => 'Description :'])
-            ->add('image', FileType::class, ['label' => 'Image'])
+            ->add('image', FileType::class, array(
+                'label' => 'Image',
+                'required' => false
+            ))
             ->add('category', EntityType::class, array(
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'label' => 'Catégorie :'
-            ))
-            ->add('save', SubmitType::class, ['label' => 'Enregistrer le film']) ->getForm();
+            ));
     }
 
 }

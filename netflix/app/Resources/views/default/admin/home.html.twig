@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="adminHome">
-                <h1>Tableau de bord :</h1>
-                <a href="{{ path('films_add') }}">Ajouter un film</a>
-                <br>
-                <a href="{{ path('filmsAdmin_list') }}">Voir la liste des films</a>
-            </div>
-        </div>
-    </div>
+
+    <h1>Tableau de bord :</h1>
+    <hr>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('films_add') }}">Ajouter un film</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('filmsAdmin_list') }}">Voir la liste des films</a>
+        </li>
+    </ul>
 {% endblock %}

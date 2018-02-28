@@ -66,7 +66,9 @@ class FilmsController extends Controller
     public function editArticleAction(Request $request, Int $id)
     {
         $em = $this->getDoctrine()->getManager();
+        /** @var Films $film */
         $film = $em->getRepository(Films::class)->find($id);
+        $film->setImage(null);
 
         $form = $this->createForm(FilmType::class, $film);
         $form->handleRequest($request);
