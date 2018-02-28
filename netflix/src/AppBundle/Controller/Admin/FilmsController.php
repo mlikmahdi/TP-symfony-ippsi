@@ -20,12 +20,13 @@ class FilmsController extends Controller
 {
 
     /**
-     * @Route("/admin/films", name="filmsAdmin_list") */
+     * @Route("/admin/films", name="filmsAdmin_list")
+     */
     public function listFilmsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $films = $em->getRepository(Films:: class)->findAll();
-        return $this->render('default/admin/list.html.twig', [
+        return $this->render('default/admin/film/list.html.twig', [
             'films' => $films ]);
     }
 
@@ -35,7 +36,7 @@ class FilmsController extends Controller
     public function viewFilmAction(int $id, FilmsManager $filmsManager)
     {
         $film = $filmsManager->getFilm($id);
-        return $this->render('default/admin/view.html.twig',
+        return $this->render('default/admin/film/view.html.twig',
             [ 'film' => $film ]);
     }
 
@@ -56,7 +57,7 @@ class FilmsController extends Controller
             return $this->redirectToRoute('adminHome');
         }
 
-        return $this->render('default/admin/addFilm.html.twig',
+        return $this->render('default/admin/film/addFilm.html.twig',
             [ 'form' => $form->createView()] );
     }
 
@@ -77,7 +78,7 @@ class FilmsController extends Controller
             return $this->redirectToRoute('filmsAdmin_list');
         }
 
-        return $this->render('default/admin/editFilm.html.twig',
+        return $this->render('default/admin/film/editFilm.html.twig',
             [ 'form' => $form->createView() ]);
     }
 }

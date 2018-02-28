@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="films">
+                <head>
+                    <title>Categories :</title>
+                </head>
+                <body>
+                <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
+                <h1>Catégories :</h1>
+                {% for category in categories %}
+                    <h3>{{ category.name }}</h3>
+                    <a href="{{ path('category_edit', {'id' : category.id}) }}">Modifier la catégorie</a>
+                    <br>
+                {% endfor %}
+                <br>
+                </body>
+            </div>
+        </div>
+    </div>
+{% endblock %}

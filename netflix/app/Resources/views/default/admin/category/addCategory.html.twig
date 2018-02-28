@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head>
+        <title>Ajout d'une catégories</title>
+    </head>
+    <body>
+        <a href="{{ path('adminHome') }}">Retour sur tableau de bord</a>
+        <h1>Ajout d'une catégorie : </h1>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div>
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div>
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </body>
+
+{% endblock %}

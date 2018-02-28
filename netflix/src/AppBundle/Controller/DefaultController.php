@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
+use AppBundle\Entity\Films;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +26,18 @@ class DefaultController extends Controller
      */
     public function homeAction()
     {
-        return $this->render('default/home.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $films = $em->getRepository(Films::class)->findBy(
+            [],
+            ['id' => 'desc'],
+            3,
+            0
+        );
+        $categories = $em->getRepository(Category::class)->findAll();
+        return $this->render('default/home.html.twig', [
+            'films' => $films,
+            'categories' => $categories
+        ]);
     }
 
 }
