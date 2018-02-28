@@ -5,6 +5,7 @@
     <h1 class="center text-danger">{{ film.name }}</h1>
 
     <a class="btn btn-light mb-3" href="{{ path('filmsAdmin_list') }}">Retour</a>
+    <a class="btn btn-light mb-3" href="{{ path('filmsAdmin_list') }}">Retour au Dashboard</a>
     <a class="btn btn-warning mb-3" href="{{ path('film_edit', {'id' : film.id}) }}">Modifier le film</a>
     <div class="card mb-3">
         {# {{ film.image }} #}

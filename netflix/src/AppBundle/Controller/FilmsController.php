@@ -23,8 +23,8 @@ class FilmsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $films = $em->getRepository(Films:: class)->findAll();
-        return $this->render('default/films/list.html.twig', [
-            'films' => $films ]);
+        return $this->render('default/films/list.html.twig',
+            [ 'films' => $films ]);
     }
 
     /**

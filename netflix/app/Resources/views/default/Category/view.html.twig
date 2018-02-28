@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head>
+        <title>{{ category.name }} :</title>
+    </head>
+    <body>
+        <a href="{{ path('categories_list') }}">Liste des catégories</a>
+        <h3>{{ category.name }} :</h3>
+        {% for film in category.films %}
+            <h3>{{ film.name }}</h3>
+            <p>{{ film.description }}</p>
+            <img> {{ film.image }} </img>
+            <br>
+            <a href="{{ path('film_view', {'id' : film.id}) }}">Détail du film</a>
+            <br>
+        {% endfor %}
+    </body>
+{% endblock %}

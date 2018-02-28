@@ -4,12 +4,20 @@
 
     <h1>Tableau de bord :</h1>
     <hr>
-    <ul class="list-group">
-        <li class="list-group-item">
+    <ul class="list-group mb-2">
+        <li class="list-group-item list-group-item-primary">
+            <a href="{{ path('filmsAdmin_list') }}">Voir la liste des films</a>
+        </li>
+        <li class="list-group-item list-group-item-primary">
             <a href="{{ path('films_add') }}">Ajouter un film</a>
         </li>
-        <li class="list-group-item">
-            <a href="{{ path('filmsAdmin_list') }}">Voir la liste des films</a>
+    </ul>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-info">
+            <a href="{{ path('categoryAdmin_list') }}">Voir la liste des catégories</a>
+        </li>
+        <li class="list-group-item list-group-item-info">
+            <a href="{{ path('category_add') }}">Ajouter une Catégorie</a>
         </li>
     </ul>
 {% endblock %}
