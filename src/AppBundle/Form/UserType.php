@@ -10,6 +10,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -28,6 +29,13 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Mot de Passe'),
                 'second_options' => array('label' => 'Confirmer Mot de Passe'),
+            ))
+            ->add('isAdmin', ChoiceType::class, array(
+                'label' => 'Administrateur',
+                'choices'  => array(
+                    'Oui' => true,
+                    'Non' => false
+                    )
             ))
         ;
     }

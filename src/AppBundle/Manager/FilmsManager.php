@@ -55,7 +55,7 @@ class FilmsManager
                 throw new BadRequestHttpException('400, Bad request');
                 break;
             default:
-                throw new HttpException($error, 'Article error');
+                throw new HttpException($error, 'Film error');
                 break;
         }
 

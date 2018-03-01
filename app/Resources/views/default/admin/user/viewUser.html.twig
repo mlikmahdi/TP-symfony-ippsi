@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block body %}
+
+
+    <a class="btn btn-light mb-3" href="{{ path('usersAdmin_list') }}">Retour</a>
+    <a class="btn btn-light mb-3" href="{{ path('adminHome') }}">Dashboard</a>
+    <a class="btn btn-warning mb-3" href="{{ path('user_edit', {'id' : user.id}) }}">Modifier {{ user.username }}</a>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h1 class="center text-danger">Nom : {{ user.username }}</h1>
+            <h3 class="card-text center">Email : {{ user.email }}</h3>
+            <h3 class="card-text center">Crée le : {{ user.createdAt | date("d/m/Y") }}</h3>
+            <h3 class="card-text center">
+                Supprimer le :
+                {% if user.deletedAt == null %}
+                    Non
+                {% else %}
+                    {{ user.deletedAt | date("d/m/Y") }}
+                {% endif %}
+            </h3>
+            <h3 class="card-text center">Bannis le :
+                {% if user.bannedAt == null %}
+                    Non
+                {% else %}
+                    {{ user.bannedAt | date("d/m/Y") }}
+                {% endif %}
+            </h3>
+            <h3 class="card-text center">
+                Administrateur :
+                {% if user.isAdmin == 1 %}
+                    Oui
+                {% else  %}
+                    Non
+                {% endif %}
+            </h3>
+        </div>
+    </div>
+
+{% endblock %}

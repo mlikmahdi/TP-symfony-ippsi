@@ -87,7 +87,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="isAdmin", type="boolean")
      */
-    private $isAdmin;
+    private $isAdmin = false;
 
 
     /**
