@@ -11,6 +11,7 @@ namespace AppBundle\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class DefaultController extends Controller
 {
@@ -21,5 +22,4 @@ class DefaultController extends Controller
     {
         return $this->render('default/admin/home.html.twig');
     }
-
 }
