@@ -1,12 +1,42 @@
 {% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> Netflix</h1>
-                <a href="{{ path('logout') }}">Se déconnecter</a>
+    <h2 class="center text-default">Films à l'affiche</h2>
+    <hr>
+    <div class="row">
+        {% for film in films %}
+            <div class="col-sm-6 col-md-4">
+                <div class="card mb-3" style="width: 18rem;">
+                    <img class="card-img-top" src="http://via.placeholder.com/400x200" alt="{{ film.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ film.name }}</h5>
+                        <p class="card-text">{{ film.description }}</p>
+                        <a href="{{ path('film_view', {'id' : film.id}) }}" class="btn btn-outline-secondary">Détails</a>
+                        <a href="{{ path('category_view', { 'id' : film.category.id }) }}" class="btn btn-default btn-sm">{{ film.category.name }}</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endfor %}
+    </div>
+    <br><br>
+    <h2 class="center text-default">Catégories phares</h2>
+    <hr>
+    <div class="row">
+        {% for category in categories %}
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ category.name }}</h3>
+
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <a class="btn btn- btn-sm mb-3" href="{{ path('category_view', {'id' : category.id}) }}">Voir la catégorie {{ category.name }}</a>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
