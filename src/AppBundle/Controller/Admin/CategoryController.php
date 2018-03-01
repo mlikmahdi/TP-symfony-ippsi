@@ -25,7 +25,7 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository(Category::class)->findAll();
         return $this->render('default/admin/category/list.html.twig', [
-            'categories' => $categories ]);
+            'categories' => $categories]);
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         }
 
         return $this->render('default/admin/category/addCategory.html.twig',
-            [ 'form' => $form->createView()] );
+            ['form' => $form->createView()]);
     }
 
     /**
@@ -61,13 +61,37 @@ class CategoryController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $category = $form->getData();
-            $em = $this->getDoctrine()->getManager(); $em->persist($category);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
             $em->flush();
             return $this->redirectToRoute('categoryAdmin_list');
         }
 
-        return $this->render('default/admin/category/editCategory.html.twig',
-            [ 'form' => $form->createView() ]);
+        return $this->render('default/admin/category/editCategory.html.twig', [
+            'form' => $form->createView(),
+            'category' => $category
+        ]);
+    }
+
+    /**
+     * @Route("/admin/category/{id}/delete", name="category_delete")
+     */
+    public function deleteCategoryAction(Int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Category $category */
+        $category = $em->getRepository(Category::class)->find($id);
+        $categoryDivers = $em->getRepository(Category::class)->findOneByName('Divers');
+        $films = $category->getFilms();
+        foreach ($films as $film) {
+            $film = $film->setCategory($categoryDivers);
+            $em->persist($film);
+            $em->flush();
+        }
+        $em->remove($category);
+        $em->flush();
+        return $this->redirectToRoute('categoryAdmin_list');
+
     }
 
 }

@@ -49,7 +49,7 @@ class FilmsManager
     {
         switch ($error) {
             case 404:
-                throw new NotFoundHttpException('404, Article not found');
+                throw new NotFoundHttpException('404, Film not found');
                 break;
             case 400:
                 throw new BadRequestHttpException('400, Bad request');

@@ -14,6 +14,7 @@ use AppBundle\Form\FilmType;
 use AppBundle\Manager\FilmsManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class FilmsController extends Controller
@@ -50,7 +51,27 @@ class FilmsController extends Controller
         $form = $this->createForm(FilmType::class, $film);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Films $film */
             $film = $form->getData();
+
+            /** @var UploadedFile $file */
+            $file = $film->getImage();
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+            $film->setImage($fileName);
+
+            /** @var UploadedFile $video */
+            $video = $film->getVideo();
+            $videoName = $this->generateUniqueFileName().'.'.$video->guessExtension();
+            $video->move(
+                $this->getParameter('videos_directory'),
+                $videoName
+            );
+            $film->setVideo($videoName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($film);
             $em->flush();
@@ -62,25 +83,71 @@ class FilmsController extends Controller
     }
 
     /**
+     * @return string
+     */
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
+    }
+
+    /**
      * @Route("/admin/films/{id}/edit", name="film_edit")
      */
-    public function editArticleAction(Request $request, Int $id)
+    public function editFilmAction(Request $request, Int $id)
     {
         $em = $this->getDoctrine()->getManager();
         /** @var Films $film */
         $film = $em->getRepository(Films::class)->find($id);
         $film->setImage(null);
+        $film->setVideo(null);
 
         $form = $this->createForm(FilmType::class, $film);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Films $film */
             $film = $form->getData();
-            $em = $this->getDoctrine()->getManager(); $em->persist($film);
+
+            /** @var UploadedFile $file */
+            $file = $film->getImage();
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+            $film->setImage($fileName);
+
+            /** @var UploadedFile $video */
+            $video = $film->getVideo();
+            $videoName = $this->generateUniqueFileName().'.'.$video->guessExtension();
+            $video->move(
+                $this->getParameter('videos_directory'),
+                $videoName
+            );
+            $film->setVideo($videoName);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($film);
             $em->flush();
             return $this->redirectToRoute('filmsAdmin_list');
         }
 
-        return $this->render('default/admin/film/editFilm.html.twig',
-            [ 'form' => $form->createView() ]);
+        return $this->render('default/admin/film/editFilm.html.twig', [
+            'form' => $form->createView(),
+            'film' => $film
+        ]);
+    }
+
+    /**
+     * @Route("/admin/films/{id}/delete", name="film_delete")
+     */
+    public function deleteFilmAction(Int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var Films $film */
+        $film = $em->getRepository(Films::class)->find($id);
+        $em->remove($film);
+        $em->flush();
+        return $this->redirectToRoute('filmsAdmin_list');
+
     }
 }

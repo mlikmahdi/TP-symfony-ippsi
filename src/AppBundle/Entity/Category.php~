@@ -67,4 +67,47 @@ class Category
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->films = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add film.
+     *
+     * @param \AppBundle\Entity\Films $film
+     *
+     * @return Category
+     */
+    public function addFilm(\AppBundle\Entity\Films $film)
+    {
+        $this->films[] = $film;
+
+        return $this;
+    }
+
+    /**
+     * Remove film.
+     *
+     * @param \AppBundle\Entity\Films $film
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFilm(\AppBundle\Entity\Films $film)
+    {
+        return $this->films->removeElement($film);
+    }
+
+    /**
+     * Get films.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFilms()
+    {
+        return $this->films;
+    }
 }

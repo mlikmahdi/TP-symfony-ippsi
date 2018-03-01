@@ -23,7 +23,8 @@ class FilmsFixtures extends Fixture
             $film
                 ->setName('Film ' . $i)
                 ->setDescription('Lorem ipsum lorem ipsum')
-                ->setImage('fixtureImage')
+                ->setImage('fixtureImage.jpeg')
+                ->setVideo('videoplayback.webm')
                 ->setCategory($this->getReference('category-' . mt_rand(0, 2)));
                 $manager->persist($film);
         }

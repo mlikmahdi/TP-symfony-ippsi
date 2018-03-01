@@ -16,10 +16,12 @@
         <form action="{{ path('films_add') }}" method="post">
             {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
             {{ form_widget(form.description, { 'attr': {'class': 'form-control mb-3','placeholder': 'Description'} }) }}
-            {{ form_widget(form.image, { 'attr': {'class': 'mb-3','placeholder': 'Image'} }) }}
+            {{ form_widget(form.image, { 'attr': {'class': 'form-control mb-3','placeholder': 'Image'} }) }}
+            {{ form_widget(form.video, { 'attr': {'class': 'form-control mb-3','placeholder': 'Video'} }) }}
             {{ form_widget(form.category, { 'attr': {'class': 'form-control mb-3','placeholder': 'Catégorie'} }) }}
             {{ form_rest(form) }}
-            <button class="btn btn-lg btn-danger btn-block" type="submit">Modifier</button>
+            <button class="btn btn-lg btn-danger btn-block" type="submit">Enregistrer les modifications</button>
+            <a href="{{ path('film_delete', { 'id' : film.id }) }}"  class="btn btn-lg btn-danger btn-block">Supprimer le film</a>
         </form>
 
     {{ form_end(form) }}

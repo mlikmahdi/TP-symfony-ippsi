@@ -10,10 +10,14 @@
     <a class="btn btn-warning mb-3" href="{{ path('film_edit', {'id' : film.id}) }}">Modifier</a>
     <div class="card mb-3">
         {# {{ film.image }} #}
-        <img class="card-img-top" src="http://via.placeholder.com/894x210" alt="{{ film.name }}">
+        <img class="card-img-top" src="{{ asset('uploads/images/' ~ film.image) }}" alt="{{ film.name }}">
         <div class="card-body">
             <p class="card-text center">{{ film.description }}</p>
         </div>
+        <video controls preload="auto" width="640" height="264">
+            <source src="{{ asset('uploads/videos/' ~ film.video) }}" type="video/mp4" >
+            <source src="{{ asset('uploads/videos/' ~ film.video) }}" type="video/webm" >
+        </video>
     </div>
 
 {% endblock %}

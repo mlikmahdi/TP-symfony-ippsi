@@ -10,7 +10,7 @@
             <div class="col-sm-6 col-md-4">
                 <div class="card mb-3" style="width: 18rem;">
                     {#{{ film.image }}#}
-                    <img class="card-img-top" src="http://via.placeholder.com/400x200" alt="{{ film.name }}">
+                    <img class="card-img-top" src="{{ asset('uploads/images/' ~ film.image) }}" alt="{{ film.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ film.name }}</h5>
                         <p class="card-text">{{ film.description }}</p>

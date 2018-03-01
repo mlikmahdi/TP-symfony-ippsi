@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Films
@@ -39,8 +40,19 @@ class Films
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/jpg", "image/png", "image/gif" })
      */
     private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="video", type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "video/mpeg", "video/mp4", "video/quicktime", "video/webm", "video/x-ms-wmv", "video/x-msvideo" })
+     */
+    private $video;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="films")
@@ -152,5 +164,29 @@ class Films
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set video.
+     *
+     * @param string|null $video
+     *
+     * @return Films
+     */
+    public function setVideo($video = null)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get video.
+     *
+     * @return string|null
+     */
+    public function getVideo()
+    {
+        return $this->video;
     }
 }
