@@ -4,19 +4,37 @@
 
     <h1 class="center text-danger">{{ film.name }}</h1>
 
-    <a class="btn btn-light mb-3"  href="{{ path('films_list') }}">Tous les films</a>
-    <div class="card mb-3">
-        {# {{ film.image }} #}
-        <img class="card-img-top" src="{{ asset('uploads/images/' ~ film.image) }}" alt="{{ film.name }}">
-        <div class="card-body">
-            <p class="card-text center">{{ film.description }}</p>
-            <a href="{{ path('category_view', { 'id' : film.category.id }) }}">{{ film.category.name }}</a>
+    <a class="btn btn-light mb-3" href="{{ path('films_list') }}">Tous les films</a>
+    <hr>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <img class="img-thumbnail mx-auto d-block" src="{{ asset('uploads/images/' ~ film.image) }}"
+                 alt="{{ film.name }}">
         </div>
-        <video controls preload="auto" width="640" height="264">
-            <source src="{{ asset('uploads/videos/' ~ film.video) }}" type="video/mp4" >
-            <source src="{{ asset('uploads/videos/' ~ film.video) }}" type="video/webm" >
-        </video>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    Synopsis
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{ film.description }}</p>
+                        <footer class="blockquote-footer">
+                            <small>
+                                <a class="btn btn-default btn-sm"
+                                   href="{{ path('category_view', { 'id' : film.category.id }) }}">{{ film.category.name }}</a>
+                            </small>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
     </div>
-
+    <hr>
+    <h3 class="center mt-5 mb-5">voir le film</h3>
+    <video class="mx-auto d-block" controls preload="auto">
+        <source src="{{ asset('uploads/videos/' ~ film.video) }}" type="video/mp4">
+        <source src="{{ asset('uploads/videos/' ~ film.video) }}" type="video/webm">
+    </video>
 
 {% endblock %}
