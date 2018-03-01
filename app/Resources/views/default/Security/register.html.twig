@@ -20,7 +20,6 @@
         {{ form_widget(form.email, { 'attr': {'class': 'form-control','for': 'inputEmail','placeholder': 'email'} }) }}
         {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control','for': 'inputPassword','placeholder': 'Mot de Passe'} }) }}
         {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','placeholder': 'Confirmer mot de passe'} }) }}
-        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','placeholder': 'Confirmer mot de passe'} }) }}
         <button class="btn btn-lg btn-danger btn-block" type="submit">Inscription</button>
         <a class="btn btn-lg btn-link btn-block" href="{{ path('login')  }}">Se connecter</a>
         {{ form_rest(form) }}
