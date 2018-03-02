@@ -27,17 +27,16 @@ class UserType extends AbstractType
             ->add('username', TextType::class)
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Mot de Passe'),
+                'first_options' => array('label' => 'Mot de Passe'),
                 'second_options' => array('label' => 'Confirmer Mot de Passe'),
             ))
             ->add('isAdmin', ChoiceType::class, array(
                 'label' => 'Administrateur',
-                'choices'  => array(
+                'choices' => array(
                     'Oui' => true,
                     'Non' => false
-                    )
-            ))
-        ;
+                )
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

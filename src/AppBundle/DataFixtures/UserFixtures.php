@@ -36,7 +36,7 @@ class UserFixtures extends Fixture
             $username = 'MM ' . $i;
             $email = $i . 'MM@gmail.com';
             $user = $this->userManager->createUser($username, $email, 'user', true);
-            $this->addReference('user-admin-' . $i , $user);
+            $this->addReference('user-admin-' . $i, $user);
         }
         $manager->flush();
     }
@@ -47,7 +47,7 @@ class UserFixtures extends Fixture
             $username = 'MaMoh ' . $i;
             $email = $i . 'MaMoh@gmail.com';
             $user = $this->userManager->createUser($username, $email, 'user', false);
-            $this->addReference('user-' . $i , $user);
+            $this->addReference('user-' . $i, $user);
         }
         $manager->flush();
     }

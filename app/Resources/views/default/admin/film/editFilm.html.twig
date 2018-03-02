@@ -21,7 +21,8 @@
             {{ form_widget(form.category, { 'attr': {'class': 'form-control mb-3','placeholder': 'Catégorie'} }) }}
             {{ form_rest(form) }}
             <button class="btn btn-lg btn-danger btn-block" type="submit">Enregistrer les modifications</button>
-            <a href="{{ path('film_delete', { 'id' : film.id }) }}"  class="btn btn-lg btn-danger btn-block">Supprimer {{ film.name }}</a>
+            <a href="{{ path('film_delete', { 'id' : film.id }) }}"
+               class="btn btn-lg btn-danger btn-block">Supprimer {{ film.name }}</a>
         </form>
 
     {{ form_end(form) }}

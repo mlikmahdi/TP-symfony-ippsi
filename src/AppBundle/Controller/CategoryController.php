@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository(Category:: class)->findAll();
         return $this->render('default/category/list.html.twig', [
-            'categories' => $categories ]);
+            'categories' => $categories]);
     }
 
     /**
@@ -34,7 +34,7 @@ class CategoryController extends Controller
     {
         $category = $categoryManager->getCategory($id);
         return $this->render('default/category/view.html.twig',
-            [ 'category' => $category ]);
+            ['category' => $category]);
     }
 
 }

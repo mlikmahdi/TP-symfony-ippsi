@@ -12,8 +12,10 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ film.name }}</h5>
                         <p class="card-text">{{ film.description }}</p>
-                        <a href="{{ path('film_view', {'id' : film.id}) }}" class="btn btn-outline-secondary">Détails</a>
-                        <a href="{{ path('category_view', { 'id' : film.category.id }) }}" class="btn btn-default btn-sm">{{ film.category.name }}</a>
+                        <a href="{{ path('film_view', {'id' : film.id}) }}"
+                           class="btn btn-outline-secondary">Détails</a>
+                        <a href="{{ path('category_view', { 'id' : film.category.id }) }}"
+                           class="btn btn-default btn-sm">{{ film.category.name }}</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,9 @@
 
                         <p class="card-text">
                             <small class="text-muted">
-                                <a class="btn btn- btn-sm mb-3" href="{{ path('category_view', {'id' : category.id}) }}">Voir la catégorie {{ category.name }}</a>
+                                <a class="btn btn- btn-sm mb-3"
+                                   href="{{ path('category_view', {'id' : category.id}) }}">Voir la
+                                    catégorie {{ category.name }}</a>
                             </small>
                         </p>
                     </div>

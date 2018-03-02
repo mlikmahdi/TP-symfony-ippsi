@@ -53,7 +53,6 @@ class Films
     private $video;
 
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="films")
      */
@@ -71,6 +70,16 @@ class Films
     }
 
     /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Set name.
      *
      * @param string $name
@@ -85,13 +94,13 @@ class Films
     }
 
     /**
-     * Get name.
+     * Get description.
      *
      * @return string
      */
-    public function getName()
+    public function getDescription()
     {
-        return $this->name;
+        return $this->description;
     }
 
     /**
@@ -109,13 +118,13 @@ class Films
     }
 
     /**
-     * Get description.
+     * Get image.
      *
      * @return string
      */
-    public function getDescription()
+    public function getImage()
     {
-        return $this->description;
+        return $this->image;
     }
 
     /**
@@ -133,13 +142,13 @@ class Films
     }
 
     /**
-     * Get image.
+     * Get category.
      *
-     * @return string
+     * @return \AppBundle\Entity\Category|null
      */
-    public function getImage()
+    public function getCategory()
     {
-        return $this->image;
+        return $this->category;
     }
 
     /**
@@ -157,13 +166,13 @@ class Films
     }
 
     /**
-     * Get category.
+     * Get video.
      *
-     * @return \AppBundle\Entity\Category|null
+     * @return string|null
      */
-    public function getCategory()
+    public function getVideo()
     {
-        return $this->category;
+        return $this->video;
     }
 
     /**
@@ -178,15 +187,5 @@ class Films
         $this->video = $video;
 
         return $this;
-    }
-
-    /**
-     * Get video.
-     *
-     * @return string|null
-     */
-    public function getVideo()
-    {
-        return $this->video;
     }
 }

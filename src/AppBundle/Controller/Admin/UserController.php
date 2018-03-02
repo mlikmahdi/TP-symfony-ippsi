@@ -27,7 +27,7 @@ class UserController extends Controller
         $users = $em->getRepository(User::class)->findAll();
 
         return $this->render('default/admin/user/listUsers.html.twig', [
-            'users' => $users ]);
+            'users' => $users]);
     }
 
     /**
@@ -38,7 +38,7 @@ class UserController extends Controller
         /** @var User $user */
         $user = $userManager->getUser($id);
         return $this->render('default/admin/user/viewUser.html.twig',
-            [ 'user' => $user ]);
+            ['user' => $user]);
     }
 
     /**

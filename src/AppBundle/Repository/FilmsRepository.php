@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Films;
+
 /**
  * FilmsRepository
  *
@@ -10,4 +12,11 @@ namespace AppBundle\Repository;
  */
 class FilmsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function searchFilms($search)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->where('f.name like :search')
+            ->setParameter('search', '%' . $search . '%');
+        return $qb->getQuery()->getResult();
+    }
 }

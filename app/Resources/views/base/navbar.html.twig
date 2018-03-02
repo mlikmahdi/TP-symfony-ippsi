@@ -1,9 +1,11 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-3">
         <a class="navbar-brand" href="{{ path('index') }}">
-            <img src="{{ asset('img/netflix-logo.png') }}" width="100px" height="30" class="d-inline-block align-top" alt="netflix">
+            <img src="{{ asset('img/netflix-logo.png') }}" width="100px" height="30" class="d-inline-block align-top"
+                 alt="netflix">
         </a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbarCollapse" style="">
@@ -15,8 +17,8 @@
                     <a class="nav-link " href="{{ path('categories_list') }}">Catégories</a>
                 </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <form class="form-inline mt-2 mt-md-0" action="{{ path('film_search') }}" method="post">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="name">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <ul class="navbar-nav">
@@ -26,7 +28,8 @@
                     </li>
                 {% endif %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mon Compte
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,15 +44,3 @@
         </div>
     </nav>
 </header>
-
-{#
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-#}

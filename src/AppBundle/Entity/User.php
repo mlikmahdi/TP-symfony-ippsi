@@ -15,6 +15,62 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=60)
+     */
+    private $password;
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=60)
+     */
+    private $plainPassword;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="bannedAt", type="datetime", nullable=true)
+     */
+    private $bannedAt;
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isAdmin", type="boolean")
+     */
+    private $isAdmin = false;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -26,71 +82,6 @@ class User implements UserInterface
     }
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=60)
-     */
-    private $password;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=60)
-     */
-    private $plainPassword;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
-     */
-    private $deletedAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="bannedAt", type="datetime", nullable=true)
-     */
-    private $bannedAt;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="isAdmin", type="boolean")
-     */
-    private $isAdmin = false;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -98,6 +89,16 @@ class User implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     /**
@@ -115,13 +116,13 @@ class User implements UserInterface
     }
 
     /**
-     * Get username
+     * Get email
      *
      * @return string
      */
-    public function getUsername()
+    public function getEmail()
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
@@ -139,13 +140,13 @@ class User implements UserInterface
     }
 
     /**
-     * Get email
+     * Get password
      *
      * @return string
      */
-    public function getEmail()
+    public function getPassword()
     {
-        return $this->email;
+        return $this->password;
     }
 
     /**
@@ -162,16 +163,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
     public function getPlainPassword()
     {
         return $this->plainPassword;
@@ -182,6 +173,15 @@ class User implements UserInterface
         $this->plainPassword = $password;
     }
 
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
     /**
      * Set createdAt
@@ -198,13 +198,13 @@ class User implements UserInterface
     }
 
     /**
-     * Get createdAt
+     * Get deletedAt
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getDeletedAt()
     {
-        return $this->createdAt;
+        return $this->deletedAt;
     }
 
     /**
@@ -222,13 +222,13 @@ class User implements UserInterface
     }
 
     /**
-     * Get deletedAt
+     * Get bannedAt
      *
      * @return \DateTime
      */
-    public function getDeletedAt()
+    public function getBannedAt()
     {
-        return $this->deletedAt;
+        return $this->bannedAt;
     }
 
     /**
@@ -246,13 +246,13 @@ class User implements UserInterface
     }
 
     /**
-     * Get bannedAt
+     * Get isAdmin
      *
-     * @return \DateTime
+     * @return bool
      */
-    public function getBannedAt()
+    public function getIsAdmin()
     {
-        return $this->bannedAt;
+        return $this->isAdmin;
     }
 
     /**
@@ -270,23 +270,13 @@ class User implements UserInterface
     }
 
     /**
-     * Get isAdmin
-     *
-     * @return bool
-     */
-    public function getIsAdmin()
-    {
-        return $this->isAdmin;
-    }
-
-    /**
      * @return array
      */
     public function getRoles()
     {
-        $roles =  ['ROLE_USER'];
+        $roles = ['ROLE_USER'];
 
-        if($this->isAdmin == 1) {
+        if ($this->isAdmin == 1) {
             $roles[] = 'ROLE_ADMIN';
         }
 
@@ -298,7 +288,7 @@ class User implements UserInterface
      */
     public function getSalt()
     {
-       return null;
+        return null;
     }
 
     /**

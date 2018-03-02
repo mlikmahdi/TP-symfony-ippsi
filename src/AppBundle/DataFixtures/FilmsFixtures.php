@@ -26,7 +26,7 @@ class FilmsFixtures extends Fixture
                 ->setImage('fixtureImage.jpeg')
                 ->setVideo('videoplayback.webm')
                 ->setCategory($this->getReference('category-' . mt_rand(0, 2)));
-                $manager->persist($film);
+            $manager->persist($film);
         }
         $manager->flush();
     }

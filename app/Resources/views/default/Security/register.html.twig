@@ -15,42 +15,13 @@
 
     <form class="form-signin" action="{{ path('user_registration') }}" method="post">
         <img class="mb-4" src="{{ asset('img/netflix-logo.png') }}" alt="" width="100%" height="72">
-        {#{{ form_label(form.username, 'Username') }}#}
         {{ form_widget(form.username, { 'attr': {'class': 'form-control','for': 'inputEmail','placeholder': 'Username'} }) }}
         {{ form_widget(form.email, { 'attr': {'class': 'form-control','for': 'inputEmail','placeholder': 'email'} }) }}
         {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control','for': 'inputPassword','placeholder': 'Mot de Passe'} }) }}
         {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','placeholder': 'Confirmer mot de passe'} }) }}
         <button class="btn btn-lg btn-danger btn-block" type="submit">Inscription</button>
-        <a class="btn btn-lg btn-link btn-block" href="{{ path('login')  }}">Se connecter</a>
+        <a class="btn btn-lg btn-link btn-block" href="{{ path('login') }}">Se connecter</a>
         {{ form_rest(form) }}
     </form>
 
 {% endblock %}
-
-                        {#<div class="form-group">#}
-                           {#{{ form_label(form.email, 'Email') }}#}
-                           {#{{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}#}
-                        {#</div>#}
-                        {#<div class="form-group">#}
-                           {#{{ form_label(form.plainPassword.first, 'Mot de Passe') }}#}
-                           {#{{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}#}
-                        {#</div>#}
-                        {#<div class="form-group">#}
-                           {#{{ form_label(form.plainPassword.second, 'Confirmer Mot de Passe') }}#}
-                           {#{{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}#}
-                        {#</div>#}
-                        {#<button type="submit" class="btn btn-default">Inscription</button>#}
-                        {#<a href="{{ path('login')  }}" type="button" class="btn btn-link">Se connecter</a>#}
-                    {#</div>#}
-                    {#{{ form_rest(form) }}#}
-               {#</form>#}
-           {#</div>#}
-
-        {#<div>#}
-            {#{{ form_label(form.name, { 'attr': {'class': 'form-control'} }) }}#}
-            {#{{ form_errors(form.name) }}#}
-            {#{{ form_widget(form.name) }}#}
-        {#</div>#}
-
-
-

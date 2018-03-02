@@ -5,22 +5,23 @@
 {% block body %}
 
     {{ form_start(form) }}
-        <h1>Modifier {{ user.username }} :</h1>
-        <hr>
-        <a class="btn btn-light" href="{{ path('adminHome') }}">Dashboard</a>
-        <hr>
-        <div role="alert">
-            {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
-        </div>
-        <form action="{{ path('films_add') }}" method="post">
-            {{ form_widget(form.username, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
-            {{ form_widget(form.email, { 'attr': {'class': 'form-control mb-3','placeholder': 'Email'} }) }}
-            {{ form_widget(form.plainPassword, { 'attr': {'class': 'form-control mb-3','placeholder': 'Mot de passe'} }) }}
-            {{ form_widget(form.isAdmin, { 'attr': {'class': 'form-control mb-3','placeholder': 'Administrateur'} }) }}
-            {{ form_rest(form) }}
-            <button class="btn btn-lg btn-danger btn-block" type="submit">Modifier {{ user.username }}</button>
-            <a href="{{ path('user_delete', { 'id' : user.id }) }}"  class="btn btn-lg btn-danger btn-block">Supprimer {{ user.username }}</a>
-        </form>
+    <h1>Modifier {{ user.username }} :</h1>
+    <hr>
+    <a class="btn btn-light" href="{{ path('adminHome') }}">Dashboard</a>
+    <hr>
+    <div role="alert">
+        {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
+    </div>
+    <form action="{{ path('films_add') }}" method="post">
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control mb-3','placeholder': 'Email'} }) }}
+        {{ form_widget(form.plainPassword, { 'attr': {'class': 'form-control mb-3','placeholder': 'Mot de passe'} }) }}
+        {{ form_widget(form.isAdmin, { 'attr': {'class': 'form-control mb-3','placeholder': 'Administrateur'} }) }}
+        {{ form_rest(form) }}
+        <button class="btn btn-lg btn-danger btn-block" type="submit">Modifier {{ user.username }}</button>
+        <a href="{{ path('user_delete', { 'id' : user.id }) }}"
+           class="btn btn-lg btn-danger btn-block">Supprimer {{ user.username }}</a>
+    </form>
     {{ form_end(form) }}
 
 {% endblock %}

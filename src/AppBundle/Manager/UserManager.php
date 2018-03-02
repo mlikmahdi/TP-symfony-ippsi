@@ -41,7 +41,7 @@ class UserManager
             ->setCreatedAt(new \DateTime())
             ->setDeletedAt(null)
             ->setBannedAt(null)
-            ->setPassword($password) // bcrypt:user
+            ->setPassword($password)// bcrypt:user
             ->setIsAdmin($isAdmin);
         $this->entityManager->persist($user);
         $this->entityManager->flush();

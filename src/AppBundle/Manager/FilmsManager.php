@@ -10,6 +10,7 @@ namespace AppBundle\Manager;
 
 
 use AppBundle\Entity\Films;
+use AppBundle\Repository\FilmsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -59,5 +60,18 @@ class FilmsManager
                 break;
         }
 
+    }
+
+    public function searchFilm($searchFilm)
+    {
+        if ($searchFilm == '') {
+            return [];
+        }
+        /** @var FilmsRepository $filmRepository */
+        $filmRepository = $this->em->getRepository(Films::class);
+
+        $searchFilms = $filmRepository->searchFilms($searchFilm);
+
+        return $searchFilms;
     }
 }

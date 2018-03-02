@@ -28,7 +28,7 @@ class FilmsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $films = $em->getRepository(Films:: class)->findAll();
         return $this->render('default/admin/film/list.html.twig', [
-            'films' => $films ]);
+            'films' => $films]);
     }
 
     /**
@@ -38,7 +38,7 @@ class FilmsController extends Controller
     {
         $film = $filmsManager->getFilm($id);
         return $this->render('default/admin/film/view.html.twig',
-            [ 'film' => $film ]);
+            ['film' => $film]);
     }
 
     /**
@@ -56,7 +56,7 @@ class FilmsController extends Controller
 
             /** @var UploadedFile $file */
             $file = $film->getImage();
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
             $file->move(
                 $this->getParameter('images_directory'),
                 $fileName
@@ -65,7 +65,7 @@ class FilmsController extends Controller
 
             /** @var UploadedFile $video */
             $video = $film->getVideo();
-            $videoName = $this->generateUniqueFileName().'.'.$video->guessExtension();
+            $videoName = $this->generateUniqueFileName() . '.' . $video->guessExtension();
             $video->move(
                 $this->getParameter('videos_directory'),
                 $videoName
@@ -79,7 +79,7 @@ class FilmsController extends Controller
         }
 
         return $this->render('default/admin/film/addFilm.html.twig',
-            [ 'form' => $form->createView()] );
+            ['form' => $form->createView()]);
     }
 
     /**
@@ -109,7 +109,7 @@ class FilmsController extends Controller
 
             /** @var UploadedFile $file */
             $file = $film->getImage();
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
             $file->move(
                 $this->getParameter('images_directory'),
                 $fileName
@@ -118,7 +118,7 @@ class FilmsController extends Controller
 
             /** @var UploadedFile $video */
             $video = $film->getVideo();
-            $videoName = $this->generateUniqueFileName().'.'.$video->guessExtension();
+            $videoName = $this->generateUniqueFileName() . '.' . $video->guessExtension();
             $video->move(
                 $this->getParameter('videos_directory'),
                 $videoName

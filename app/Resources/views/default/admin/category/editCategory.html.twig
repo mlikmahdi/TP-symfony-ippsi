@@ -17,7 +17,7 @@
         {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
         {{ form_rest(form) }}
         <button class="btn btn-lg btn-danger btn-block" type="submit">Modifier</button>
-        <a href="{{ path('category_delete', { 'id' : category.id }) }}"  class="btn btn-lg btn-danger btn-block">Supprimer {{ category.name }}</a>
+        <a href="{{ path('category_delete', { 'id' : category.id }) }}" class="btn btn-lg btn-danger btn-block">Supprimer {{ category.name }}</a>
     </form>
 
     {{ form_end(form) }}
