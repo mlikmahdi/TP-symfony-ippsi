@@ -13,10 +13,14 @@
         {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
     </div>
     <form action="{{ path('films_add') }}" method="post">
-        {{ form_widget(form.username, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
-        {{ form_widget(form.email, { 'attr': {'class': 'form-control mb-3','placeholder': 'Email'} }) }}
-        {{ form_widget(form.plainPassword, { 'attr': {'class': 'form-control mb-3','placeholder': 'Mot de passe'} }) }}
-        {{ form_widget(form.isAdmin, { 'attr': {'class': 'form-control mb-3','placeholder': 'Administrateur'} }) }}
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control mb-3'} }) }}
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control mb-3'} }) }}
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control mb-3','placeholder': 'Mot de passe'} }) }}
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control mb-3','placeholder': 'Confirmer Mot de passe'} }) }}
+        {{ form_label(form.isAdmin) }}
+        {{ form_widget(form.isAdmin, { 'attr': {'class': 'form-control mb-3'} }) }}
         {{ form_rest(form) }}
         <button class="btn btn-lg btn-danger btn-block" type="submit">Ajouter l'utilisateur</button>
     </form>

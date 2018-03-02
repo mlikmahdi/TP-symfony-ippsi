@@ -28,11 +28,11 @@ class FilmType extends AbstractType
             ->add('name', TextType::class, ['label' => 'Nom du film :'])
             ->add('description', TextareaType::class, ['label' => 'Description :'])
             ->add('image', FileType::class, array(
-                'label' => 'Image',
+                'label' => 'Image :',
                 'required' => false
             ))
             ->add('video', FileType::class, array(
-                'label' => 'Video',
+                'label' => 'Video :',
                 'required' => false
             ))
             ->add('category', EntityType::class, array(

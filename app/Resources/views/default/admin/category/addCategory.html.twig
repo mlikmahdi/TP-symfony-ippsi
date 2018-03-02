@@ -13,7 +13,8 @@
         {{ form_errors(form, { 'attr': {'class': 'alert alert-danger mb-3'} }) }}
     </div>
     <form action="{{ path('films_add') }}" method="post">
-        {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3','placeholder': 'Nom'} }) }}
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, { 'attr': {'class': 'form-control mb-3'} }) }}
         {{ form_rest(form) }}
         <button class="btn btn-lg btn-danger btn-block" type="submit">Ajouter</button>
     </form>
